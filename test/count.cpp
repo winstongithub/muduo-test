@@ -1,5 +1,6 @@
 #include "../base/MutexLockGuard.h"
 #include <iostream>
+#include<thread>
 using namespace muduo;
 class Counter:noncopyable
 {
@@ -20,20 +21,23 @@ class Counter:noncopyable
     int64_t m_value;
     mutable std::mutex m_mutex;
 };
-void addValue(Counter &counter)
+void addValue(Counter *counter)
 {
     for( auto i=0; i<100000; i++)
     {
-        counter.getAndIncrease();
+        counter->getAndIncrease();
     }
 }
 int main()
 {
     Counter counter;
-    std::thread th1(addValue,counter);
-    std::thread th2(addValue,counter);
+    std::thread th1(addValue,&counter);
+    std::thread th2(addValue,&counter);
+    std::cout << counter.value() << std::endl;
     th1.join();
+    std::cout << counter.value() << std::endl;
     th2.join();
     std::cout << counter.value() << std::endl;
+    
 
 }

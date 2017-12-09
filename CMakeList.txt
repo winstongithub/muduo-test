@@ -1,2 +1,0 @@
-project(HELLO)
-set(SRC_LIST base/)
