@@ -1,4 +1,5 @@
 project(HELLO)
+add_compile_options(-std=c++11)
 set(SRC_LIST test/counter/count.cpp)
 add_executable(count ${SRC_LIST})
 TARGET_LINK_LIBRARIES(count pthread)
