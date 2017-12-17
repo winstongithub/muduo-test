@@ -3,6 +3,7 @@
 #include <iostream>
 #include <assert.h>
 #include <poll.h>
+#include "base/logging.h"
 
 using namespace std;
 using namespace muduo;
@@ -11,7 +12,7 @@ EventLoop::EventLoop()
     :looping_(false),
     threadId_(std::this_thread::get_id())
 {
-    cout << "EventLoop create" << this << "in_thread " << threadId_<<endl;
+    LOG_DEBUG << "EventLoop created " << this << " in thread " << threadId_;
     if( t_loopInThisThread )
     {
         cout << "another eventLoop " << t_loopInThisThread << "exists in this thread"
