@@ -4,12 +4,14 @@
 #include "thread"
 
 namespace muduo{
+class EventLoop;
 class EventLoop : noncopyable
 {
 public:
     EventLoop();
     ~EventLoop();
     void loop();
+    static EventLoop * getEventLoopOfCurrentThread();
     void assertInLoopThread()
     {
         if( !isInLoopThread())

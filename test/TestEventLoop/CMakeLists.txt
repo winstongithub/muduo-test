@@ -1,0 +1,6 @@
+project(TestEventLoop)
+add_compile_options(-std=c++11)
+include_directories()
+set(SRC_LIST test1.cpp)
+add_executable(test1 ${SRC_LIST})
+TARGET_LINK_LIBRARIES(test1 pthread)
