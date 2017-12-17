@@ -1,0 +1,5 @@
+SET (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/muduo)
+aux_source_directory("${PROJECT_SOURCE_DIR}/muduo/base" LIBMUDUO_SRC)
+aux_source_directory("${PROJECT_SOURCE_DIR}/muduo/net" LIBMUDUO_SRC)
+ADD_LIBRARY (muduo SHARED ${LIBMUDUO_SRC})

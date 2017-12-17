@@ -3,19 +3,17 @@
 using namespace muduo;
 using namespace std;
 
+EventLoop * g_loop;
+
 void threadFunc()
 {
-    cout << "threadFunc():tid=" <<std::this_thread::get_id() << endl;
-
-    EventLoop loop;
-    loop.loop();
+    g_loop->loop();
 }
 
 int main()
 {
-    cout << "main():tid=" <<std::this_thread::get_id() << endl;
     EventLoop loop;
+    g_loop = &loop;
     std::thread t(threadFunc);
-    loop.loop();
     t.join();
 }

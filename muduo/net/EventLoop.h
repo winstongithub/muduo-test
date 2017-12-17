@@ -2,6 +2,7 @@
 #define _MUDUO_EVENTLOOP_H_
 #include "base/NonCopyable.h"
 #include "thread"
+#include <iostream>
 
 namespace muduo{
 class EventLoop;
@@ -21,7 +22,7 @@ public:
     }
     bool isInLoopThread() const { return threadId_ == std::this_thread::get_id();}
 private:
-    void abortNotInLoopThread();
+    void abortNotInLoopThread(){std::cout << "error" << std::endl; };
     bool looping_;
     const std::thread::id threadId_;
 };

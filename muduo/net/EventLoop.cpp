@@ -11,11 +11,11 @@ EventLoop::EventLoop()
     :looping_(false),
     threadId_(std::this_thread::get_id())
 {
-    cout << "EventLoop create" << this << "in_thread " << threadId_;
+    cout << "EventLoop create" << this << "in_thread " << threadId_<<endl;
     if( t_loopInThisThread )
     {
         cout << "another eventLoop " << t_loopInThisThread << "exists in this thread"
-        << threadId_;
+        << threadId_ << endl;
     }
     else
     {
@@ -40,6 +40,6 @@ void EventLoop::loop()
     assertInLoopThread();
     looping_ = true;
     ::poll(NULL,0,5*1000);
-    cout << "EventLoop" << this << "stop looping";
+    cout << "EventLoop" << this << "stop looping" << endl;
     looping_ = false;
 }
