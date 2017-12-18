@@ -12,7 +12,7 @@ EventLoop::EventLoop()
     :looping_(false),
     threadId_(std::this_thread::get_id())
 {
-    LOG_DEBUG << "EventLoop created " << this << " in thread " << threadId_;
+    //LOG_DEBUG << "EventLoop created " << this << " in thread " << threadId_;
     if( t_loopInThisThread )
     {
         cout << "another eventLoop " << t_loopInThisThread << "exists in this thread"

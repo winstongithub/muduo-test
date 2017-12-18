@@ -20,12 +20,13 @@ class Logger
     Logger(SourceFile file, int line, LogLevel level, const char *func);
     static LogLevel logLevel();
     LogStream &stream() { return impl_.stream_; }
+    
 
     class Impl
     {
       public:
         typedef Logger::LogLevel LogLevel;
-        Impl(LogLevel level, int old_errno, const SourceFile &file, int line);
+        Impl(LogLevel level, int old_errno, const SourceFile &file, int line){};
         LogStream stream_;
 
     };

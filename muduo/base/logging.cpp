@@ -1,7 +1,17 @@
 #include "logging.h"
 using namespace muduo;
 
-extern Logger::LogLevel g_logLevel;
+Logger::LogLevel initLogLevel()
+{
+  if (::getenv("MUDUO_LOG_TRACE"))
+    return Logger::TRACE;
+  else if (::getenv("MUDUO_LOG_DEBUG"))
+    return Logger::DEBUG;
+  else
+    return Logger::INFO;
+}
+Logger::LogLevel g_logLevel = initLogLevel();
+
 Logger::LogLevel Logger::logLevel()
 {
     return g_logLevel;
